@@ -1,0 +1,17 @@
+[
+  {
+    "DPI": "123",
+    "Nombre": "Jose",
+    "Direccion": "direccion 1"
+  }
+  {
+    "DPI": "456",
+    "Nombre": "Guillermo",
+    "Direccion": "direcion 2"
+  }
+  {
+    "DPI": "895",
+    "Nombre": "Alberto",
+    "Direccion":  "direccion 3"
+  }
+]

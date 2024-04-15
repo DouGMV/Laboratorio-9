@@ -1,0 +1,17 @@
+[
+  {
+    "Codigo": "t1",
+    "Nombre": "Programaci�n",
+    "Precio": 100
+  }
+  {
+    "Codigo": "t2",
+    "Nombre": "M�sica",
+    "Precio": 120
+  }
+  {
+    "Codigo": "t3",
+    "Nombre": "Pintura",
+    "Precio": 110
+  }
+ ]

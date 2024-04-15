@@ -1,0 +1,69 @@
+﻿@page "/"
+@inject HttpClient Http
+
+<PageTitle>Home</PageTitle>
+
+<h1>Inscripciones</h1>
+
+<div>
+    @if (alumnos == null)
+    {
+        <p><cm>Cargando...</cm></p>
+    }
+    else
+    {
+        <select class="form-select" aria-label="Default select example" @bind="@dpiAlumno">
+            <option selected>Seleccione al alumno</option>
+            foreach (var alumno in alumnos)
+            {
+            <option value="alumno.Dpi">alumno.Nombre</option>
+            }
+        </select>
+    }
+</div>
+
+<div>
+    @if (talleres == null)
+    {
+    <p><cm>Cargando...</cm></p>
+    }
+    else
+    }
+        <select class="form form-select form-select-lg mb-3" aria-label="Large select example" @bind="@codigoTaller">
+            <option selected>Seleccion Taller</option>
+            @foreach(var taller in talleres)
+            {
+                <option value="@taller.codigo>"@taller.Nombre</option>
+            }
+        </select>
+</div>
+
+
+
+@code{
+    List<Alumno> alumnos;
+    List<Taller> talleres;
+    List<Inscripcion> incripciones;
+
+    string codigoTaller;
+    string dpiAlumno;
+
+    protected override async Task OnInitializedAsync()
+    {
+        alumnos = await Http.GetFromJsonAsync<List<Alumno>>("sample-data/alumno.json");
+        talleres = await Http.GetFromJsonAsync<List<Taller>>("sample-data/taller.json");
+    }
+
+    protected async Task GuardarInscripcion()
+    {
+        Inscripcion inscripcion = new Inscripcion();
+
+        inscripcion.Codigo = codigoTaller;
+        inscripcion.Dpi = dpiAlumno;
+        inscripcion.fecha = DateTime.Now;
+
+        inscripciones.Add(inscripcion);
+
+        await localStorage.SetItemAsync("Inscripciones", "inscripciones");
+    }
+}
